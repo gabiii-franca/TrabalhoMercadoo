@@ -1,0 +1,14 @@
+const express = require("express");
+const routes = express.Router();
+const UserController = require("./controllers/UserController");
+const ProdutoController = require("./controllers/ProdutoController");
+const SessionController = require("./controllers/SessionController");
+//const authMiddleware = require("./middlewares/auth");
+routes.post("/usuario", UserController.store);
+routes.post("/sessions", SessionController.store);
+//routes.use(authMiddleware);
+routes.post("/produto", ProdutoController.store);
+routes.get("/produtos", ProdutoController.list);
+routes.get("/usuario", UserController.list);
+routes.get("teste", (req, res) => res.json({ ok: true }));
+module.exports = routes;
